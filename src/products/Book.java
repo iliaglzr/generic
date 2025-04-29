@@ -1,12 +1,13 @@
 package products;
 public class Book extends Product{
-    public  int number=0;
+    private static int number = 0;
+
     private String author;
     private String publication;
     private String genre;
 
-    public Book(String title, Double price, String id, String author, String publication, String genre) {
-        super(title, price, id);
+    public Book(String title, Double price, String author, String publication, String genre) {
+        super(title, price);
         setAuthor(author);
         setGenre(genre);
         setPublication(publication);
@@ -61,10 +62,10 @@ public class Book extends Product{
         number++;
         if (number>9) {
 
-            setId("2" + String.format("%02",number));
-            return "2" + String.format("%02",number);
+            setId("2" + String.format("%02d",number));
+            return "2" + String.format("%02d",number);
         }
-        setId("1" + String.format("%03",number));
-        return "1" + String.format("%03",number);
+        setId("1" + String.format("%03d",number));
+        return "1" + String.format("%03d",number);
     }
 }

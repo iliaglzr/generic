@@ -1,13 +1,14 @@
 package products;
 
 public class Notebook extends Product{
-    int number=0;
+    private static int number = 0;
+
     private int pageCount;
 
     private boolean isHardCover;
 
-    public Notebook(String title, Double price, String id, int pageCount, boolean isHardCover) {
-        super(title, price, id);
+    public Notebook(String title, Double price, int pageCount, boolean isHardCover) {
+        super(title, price);
         setPageCount(pageCount);
         this.isHardCover = isHardCover;
     }
@@ -33,10 +34,10 @@ public class Notebook extends Product{
         number++;
         if (number>9) {
 
-            setId("2" + String.format("%02",number));
-            return "2" + String.format("%02",number);
+            setId("2" + String.format("%02d",number));
+            return "2" + String.format("%02d",number);
         }
-        setId("2" + String.format("%03",number));
-        return "2" + String.format("%03",number);
+        setId("2" + String.format("%03d",number));
+        return "2" + String.format("%03d",number);
     }
 }

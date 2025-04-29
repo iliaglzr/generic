@@ -4,9 +4,8 @@ public abstract class Product {
     private String title;
     private Double price;
     private String id;
-    Product (String title , Double price, String id) {
+    Product (String title , Double price) {
         setTitle(title);
-        setId(id);
         setPrice(price);
     }
 

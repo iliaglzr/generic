@@ -7,33 +7,34 @@ public class Main {
         Inventory<Book> bookInventory = new Inventory<Book>();
         Inventory<Notebook> notebookInventory =new Inventory<Notebook>();
         Inventory<Accessory> accessoryInventory = new Inventory<Accessory>();
-        Book book1 = new Book("math",190000.00,"","ilia","iran","mathes");
+
+        Book book1 = new Book(" math ",190000.00," ilia "," iran "," matches ");
         book1.generateId();
         bookInventory.addItems(book1);
-        Book book2 = new Book("ap",180000.00,"","ilia","iran","programing");
+        Book book2 = new Book(" ap ",180000.00," ilia "," iran "," programing ");
         book2.generateId();
         bookInventory.addItems(book2);
 
-        Notebook notebook1 = new Notebook("notebook 1",30000.00,"",60,true);
+        Notebook notebook1 = new Notebook("notebook 1",30000.00,60,true);
         notebook1.generateId();
         notebookInventory.addItems(notebook1);
 
-        Notebook notebook2 = new Notebook("notebook 2",50000.00,"",100,true);
+        Notebook notebook2 = new Notebook("notebook 2",50000.00,100,true);
         notebook2.generateId();
         notebookInventory.addItems(notebook2);
 
-        Accessory accessory1 = new Accessory("clock",3800000.00,"","black");
+        Accessory accessory1 = new Accessory(" clock ",3800000.00," black ");
         accessory1.generateId();
         accessoryInventory.addItems(accessory1);
 
-        Accessory accessory2 = new Accessory("glasses",4600000.00,"","blue");
+        Accessory accessory2 = new Accessory(" glasses ",4600000.00," blue ");
         accessory2.generateId();
         accessoryInventory.addItems(accessory2);
-        System.out.println("books :");
+        System.out.println("books : ");
         bookInventory.displayAll();
-        System.out.println("Notebooks :");
+        System.out.println("Notebooks : ");
         notebookInventory.displayAll();
-        System.out.println("accessory :");
+        System.out.println("accessory : ");
         accessoryInventory.displayAll();
 
         accessoryInventory.removeItemsById("3001");
@@ -42,13 +43,24 @@ public class Main {
         bookInventory.findItemsById("1002");
         notebookInventory.findItemsById("3004");
 
-//        public static double calculateTotalPrice(Inventory<? extends Product> inventory) {
-//            double totalPrice = 0.0;
-//            for (Inventory inventory : Inventory) {
-//                totalPrice += product.getPrice();
-//            }
-//            return totalPrice;
-//        }
+        bookInventory.applyDiscount(" ap ",20);
+        bookInventory.applyDiscount(" glasses ",20);
+
+        System.out.println("total books price:");
+        calculateTotalPrice(bookInventory);
+        System.out.println("total notebooks price:");
+        calculateTotalPrice(notebookInventory);
+        System.out.println("total accessory price:");
+        calculateTotalPrice(accessoryInventory);
 
     }
+    public static double calculateTotalPrice(Inventory<? extends Product> inventory) {
+            double totalPrice = 0.0;
+            for (Product product : inventory.getItems()) {
+                totalPrice += product.getPrice();
+
+            }
+        System.out.println(totalPrice);
+            return totalPrice;
+        }
 }
